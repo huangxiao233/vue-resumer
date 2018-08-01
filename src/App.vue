@@ -40,6 +40,7 @@ export default {
     background: #EAEBEC;
   }
   .page>main{
+    /* 分享剩余空间的权重 */
     flex-grow:1;
   }
   .page>main{
@@ -49,7 +50,14 @@ export default {
     margin-top: 16px;
     margin-bottom: 16px;
     display: flex;
-    justify-content: space-around;
+    /* 设置弹性盒子元素在主轴上面的排列方式 */
+    /* justify-content: space-around; */
+    /* 弹性盒子的元素会均匀的分布，并且两端保留子元素之间距离的一半 */
+    justify-content: space-between;
+    /* 平均分布 */
+    padding: 0 16px;
+    width:100%;
+    align-self:center;
   }
   #resumeEditor{
     width:35%;
@@ -58,6 +66,9 @@ export default {
   #resumePreview{
     width:61.66667%;
     background: #777;
+    flex-grow: 1;
+    /* 索取剩余空间 */
+    margin-left: 16px;
   }
 
 </style>
