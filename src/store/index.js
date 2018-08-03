@@ -9,24 +9,25 @@ export default new Vuex.Store({
         resume:{
             config: [
                                 { field: 'profile', icon: 'add' },
-                                { field: 'work history', icon: 'work' },
+                                { field: 'workHistory', icon: 'work' },
                                 { field: 'education', icon: 'book' },
                                 { field: 'projects', icon: 'heart' },
                                 { field: 'awards', icon: 'cup' },
                                 { field: 'contacts', icon: 'phone' },
                             ],
                             profile: {
-                                name: '',
-                                city: '',
-                                title: ''
+                                name: '黄笑',
+                                city: '北京',
+                                title: '前端工程师',
+                                birthday:'1997-06-10'
                             },
-                            'work history': [
+                            'workHistory': [
                                 { company: 'AL', content: '我的第二份工作是' },
                                 { company: 'TX', content: '我的第一份工作是' },
                             ],
                             education: [
-                                { school: 'AL', content: '文字' },
-                                { school: 'TX', content: '文字' },
+                                { school: '安徽工业大学', content: '本科' },
+                                { school: '北京科技大学', content: '硕士' },
                             ],
                             projects: [
                                 { name: 'project A', content: '文字' },
