@@ -18,21 +18,25 @@
             </ol>
         </nav>
         <ol class="panels">
-            <!-- <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li>7</li> -->
+        
             <li v-for="item in resume.config" v-show="item.field===selected">
                 <!-- {{resume[item.filed]}} -->
-                <div class="resumeField" v-for="(value,key) in resume[item.field]">
+                <!-- <div class="resumeField" v-for="(value,key) in resume[item.field]"> -->
+                <div v-if="resume[item.field] instanceof Array">
+                    <div class="subitem" v-for="subitem in resume[item.field]">
+                        <div class="resumeField" v-for="(balue,key) in subitem">
+                            <label>{{key}}</label>
+                            <!-- <input type="text" v-model="resume[item.field][key]"> -->
+                            <input type="text" :value="value">
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <div v-else class="resumeField" v-for="(value,key) in resume[item.field]">
                     <label>{{key}}</label>
                     <input type="text" v-model="resume[item.field][key]">
-                    
                 </div>
-            </li>
+           </li>
         </ol>
     </div>
 </template>
@@ -58,13 +62,25 @@
                         title: ''
                     },
                     'work history': [
-                        { company: 'al', content: '我的第二份工作是' },
-                        { company: 'tx', content: '我的第一份工作是' }
+                        { company: 'AL', content: '我的第二份工作是' },
+                        { company: 'TX', content: '我的第一份工作是' },
                     ],
-                    education: [],
-                    projects: [],
-                    awards: [],
-                    contacts: []
+                    education: [
+                        { school: 'AL', content: '文字' },
+                        { school: 'TX', content: '文字' },
+                    ],
+                    projects: [
+                        { name: 'project A', content: '文字' },
+                        { name: 'project B', content: '文字' },
+                    ],
+                    awards: [
+                        { name: 'awards A', content: '文字' },
+                        { name: 'awards B', content: '文字' },
+                    ],
+                    contacts: [
+                        { contact: 'phone', content: '13812345678' },
+                        { contact: 'qq', content: '12345678' },
+                    ],
 
                 }
             }
@@ -115,7 +131,7 @@
     }
 
     .resumeField {
-        > label {
+        >label {
             display: block;
 
         }
