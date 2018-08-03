@@ -11,6 +11,14 @@
            <p><small>{{resume.profile.city}}</small></p>
            <p><small>{{resume.profile.birthday}}</small></p>
        </section>
+       <section data-name="projects" v-show="resume.education">
+            <ol>
+                <li v-for="item in resume.projects">
+                    <h3>{{item.name}}</h3>
+                    <p v-show="item.content">{{item.content}}</p>
+                </li>
+            </ol>
+        </section>
        <section data-name="workHistory" v-show="resume.workHistory">
           <h2>工作经历</h2>
           <ol>
@@ -28,6 +36,24 @@
                    <span v-show="item.content">- {{item.content}}</span>
                </li>
            </ol>
+       </section>
+       <section data-name="awards" v-show="resume.awards">
+           <h2>获奖情况</h2>
+           <ol>
+               <li v-for="item in resume.awards">
+                   <h3>{{item.name}}</h3>
+                   <p v-show="item.content">{{item.ccontent}}</p>
+               </li>
+           </ol>
+       </section>
+       <section data-name="contacts" v-show="resume.contacts">
+           <h2>联系方式</h2>
+          <table>
+              <tr v-for="item in resume.contacts">
+                  <td>{{item.contact}}</td>
+                  <td v-show="item.content">{{item.content}}</td>                    
+              </tr>
+          </table>
        </section>
     </div>
 </template>
@@ -48,6 +74,7 @@
         padding: 2em;
         color:#333;
         line-height: 1.2;
+        overflow: auto;
         ol{
             list-style:none;
         }
@@ -82,6 +109,11 @@
             section[data-name="education"]{
                 li{
                     line-height:1.5;
+                }
+            }
+            section[data-name="contacts"]{
+                td:first-child{
+                    padding-right: 1em;
                 }
             }
         }
