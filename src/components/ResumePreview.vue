@@ -1,6 +1,6 @@
 <template>
     <div id="resumePreview">
-        i am resumePreview
+       
     </div>
 </template>
 <script>
