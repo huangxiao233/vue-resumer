@@ -24,7 +24,7 @@
                 <!-- <div class="resumeField" v-for="(value,key) in resume[item.field]"> -->
                 <div v-if="resume[item.field] instanceof Array">
                     <div class="subitem" v-for="subitem in resume[item.field]">
-                        <div class="resumeField" v-for="(balue,key) in subitem">
+                        <div class="resumeField" v-for="(value,key) in subitem">
                             <label>{{key}}</label>
                             <!-- <input type="text" v-model="resume[item.field][key]"> -->
                             <input type="text" :value="value">
@@ -37,54 +37,81 @@
                     <input type="text" v-model="resume[item.field][key]">
                 </div>
            </li>
+           <!-- 搞一个VUEX测试 -->
+           <li>
+               {{count}}
+               <button @click = "add">+</button>
+               <button @click = "minus">-</button>
+
+           </li>
         </ol>
     </div>
 </template>
 <script>
     export default {
         name: 'ResumeEditor',
-        data() {
-            return {
-                selected: 'profile',
-                resume: {
-                    //    visibleItems:['bio','work history','education','projects','awards','contacts','others'],
-                    config: [
-                        { field: 'profile', icon: 'add' },
-                        { field: 'work history', icon: 'work' },
-                        { field: 'education', icon: 'book' },
-                        { field: 'projects', icon: 'heart' },
-                        { field: 'awards', icon: 'cup' },
-                        { field: 'contacts', icon: 'phone' },
-                    ],
-                    profile: {
-                        name: '',
-                        city: '',
-                        title: ''
-                    },
-                    'work history': [
-                        { company: 'AL', content: '我的第二份工作是' },
-                        { company: 'TX', content: '我的第一份工作是' },
-                    ],
-                    education: [
-                        { school: 'AL', content: '文字' },
-                        { school: 'TX', content: '文字' },
-                    ],
-                    projects: [
-                        { name: 'project A', content: '文字' },
-                        { name: 'project B', content: '文字' },
-                    ],
-                    awards: [
-                        { name: 'awards A', content: '文字' },
-                        { name: 'awards B', content: '文字' },
-                    ],
-                    contacts: [
-                        { contact: 'phone', content: '13812345678' },
-                        { contact: 'qq', content: '12345678' },
-                    ],
+        // data() {
+        //     return {
+        //         selected: 'profile',
+        //         resume: {
+        //             //    visibleItems:['bio','work history','education','projects','awards','contacts','others'],
+        //             config: [
+        //                 { field: 'profile', icon: 'add' },
+        //                 { field: 'work history', icon: 'work' },
+        //                 { field: 'education', icon: 'book' },
+        //                 { field: 'projects', icon: 'heart' },
+        //                 { field: 'awards', icon: 'cup' },
+        //                 { field: 'contacts', icon: 'phone' },
+        //             ],
+        //             profile: {
+        //                 name: '',
+        //                 city: '',
+        //                 title: ''
+        //             },
+        //             'work history': [
+        //                 { company: 'AL', content: '我的第二份工作是' },
+        //                 { company: 'TX', content: '我的第一份工作是' },
+        //             ],
+        //             education: [
+        //                 { school: 'AL', content: '文字' },
+        //                 { school: 'TX', content: '文字' },
+        //             ],
+        //             projects: [
+        //                 { name: 'project A', content: '文字' },
+        //                 { name: 'project B', content: '文字' },
+        //             ],
+        //             awards: [
+        //                 { name: 'awards A', content: '文字' },
+        //                 { name: 'awards B', content: '文字' },
+        //             ],
+        //             contacts: [
+        //                 { contact: 'phone', content: '13812345678' },
+        //                 { contact: 'qq', content: '12345678' },
+        //             ],
 
-                }
+        //         }
+        //     }
+        // },
+        computed:{
+            count(){
+                return this.$store.state.count
+            },
+            selected(){
+                return this.$store.state.selected
+            },
+            resume(){
+                return this.$store.state.resume
+            }
+        },
+        methods:{
+            add(){
+                this.$store.commit('increment')
+            },
+            minus(){
+                this.$store.commit('decrement')
             }
         }
+
     }
 
 </script>
