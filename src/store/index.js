@@ -1,5 +1,6 @@
 import  Vuex from  'vuex'
 import Vue from 'vue'
+import objectPath from "object-path"
 // const store = new Vuex.Store({
 Vue.use(Vuex)
 export default new Vuex.Store({
@@ -54,6 +55,12 @@ export default new Vuex.Store({
         //提交负荷，也就是额外参数
         switchTab(state,payload){
             state.selected = payload
+        },
+        // updateResume(state,{field,subfield,value}){
+        //     state.resume[field][subfield] = value
+        updateResume(state,{path,value}){
+            object.set(state.resume,path,value)
+        }
         }
     }
 })

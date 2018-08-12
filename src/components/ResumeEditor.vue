@@ -23,18 +23,24 @@
                 <!-- {{resume[item.filed]}} -->
                 <!-- <div class="resumeField" v-for="(value,key) in resume[item.field]"> -->
                 <div v-if="resume[item.field] instanceof Array">
-                    <div class="subitem" v-for="subitem in resume[item.field]">
+                    <!-- <div class="subitem" v-for="subitem in resume[item.field]"> -->
+                        <div class="resumeField" v-for="(subitem,i) in resume[item.field]">
                         <div class="resumeField" v-for="(value,key) in subitem">
                             <label>{{key}}</label>
                             <!-- <input type="text" v-model="resume[item.field][key]"> -->
-                            <input type="text" :value="value">
+                            <!-- <input type="text" :value="value"> -->
+                            <input type="text":value = "value" @input="changeResumeField(`${item.field}.${i}.${key}`,$event.target.value)">
                         </div>
                         <hr>
                     </div>
                 </div>
                 <div v-else class="resumeField" v-for="(value,key) in resume[item.field]">
                     <label>{{key}}</label>
-                    <input type="text" v-model="resume[item.field][key]">
+                    
+                    <!-- <input type="text" v-model="resume[item.field][key]"> -->
+                
+                    <!-- <input type="text" :value="value" @input="changeResumeField(item.ield,key,$event.target.value)"> -->
+                    <input type="text" :value="value" @input="changeResumerField(`${item.field}.${key}`,$event.target.value)">
                 </div>
            </li>
            <!-- 搞一个VUEX测试 -->
@@ -112,15 +118,28 @@
             }
         },
         methods:{
-            add(){
-                this.$store.commit('increment')
-            },
-            minus(){
-                this.$store.commit('decrement')
+            changeResumeField(path,value){
+                this.$store.commit('updateResume',{
+                    this.$store.commit('updateResume',{
+                        // field,
+                        // subfield,
+                        path,
+                        value
+                    })
+                }
             }
         }
+               
+            
+            // add(){
+            //     this.$store.commit('increment')
+            // },
+            // minus(){
+            //     this.$store.commit('decrement')
+            // }
+        
 
-    }
+    
 
 </script>
 <style lang="scss" scoped>
