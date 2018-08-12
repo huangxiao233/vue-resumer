@@ -44,12 +44,12 @@
                 </div>
            </li>
            <!-- 搞一个VUEX测试 -->
-           <li>
+           <!-- <li>
                {{count}}
                <button @click = "add">+</button>
                <button @click = "minus">-</button>
 
-           </li>
+           </li> -->
         </ol>
     </div>
 </template>
@@ -119,7 +119,7 @@
         },
         methods:{
             changeResumeField(path,value){
-                this.$store.commit('updateResume',{
+               
                     this.$store.commit('updateResume',{
                         // field,
                         // subfield,
