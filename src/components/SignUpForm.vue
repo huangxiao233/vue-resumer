@@ -59,7 +59,7 @@
 <style scoped lang="scss">
         .row{
           margin-bottom: 20px;
-
+          
         }
         label{
           display: inline-block;
