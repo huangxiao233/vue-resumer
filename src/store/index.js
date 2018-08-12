@@ -49,17 +49,23 @@ export default new Vuex.Store({
         increment(state){
             state.count++
         },
+
         decrement(state){
             state.count--
+        },
+        initState(state,payload){
+            Object.assign(state,payload)
         },
         //提交负荷，也就是额外参数
         switchTab(state,payload){
             state.selected = payload
+            localStorage.setItem('state',JSON.stringify(state))
         },
         // updateResume(state,{field,subfield,value}){
         //     state.resume[field][subfield] = value
         updateResume(state,{path,value}){
             object.set(state.resume,path,value)
+            localStorage.setItem('state',JSON.stringify(state))
         }
         }
     }
