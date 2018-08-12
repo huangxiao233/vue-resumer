@@ -5,7 +5,7 @@ import objectPath from "object-path"
 Vue.use(Vuex)
 export default new Vuex.Store({
     state:{
-        count:0,
+        
         selected:'profile',
         user:{
            id:'',
@@ -50,13 +50,7 @@ export default new Vuex.Store({
                     },
 
     mutations:{
-        increment(state){
-            state.count++
-        },
-
-        decrement(state){
-            state.count--
-        },
+      
         initState(state,payload){
             Object.assign(state,payload)
         },
@@ -68,13 +62,16 @@ export default new Vuex.Store({
         // updateResume(state,{field,subfield,value}){
         //     state.resume[field][subfield] = value
         updateResume(state,{path,value}){
-            object.set(state.resume,path,value)
+            objectPath.set(state.resume,path,value)
             localStorage.setItem('state',JSON.stringify(state))
         },
         setUser(state,payload){
             Object.assign(state.user,payload)
-            console.log(state.user)
+            
+         },
+         removeUser(state){
+             state.user.id = null
          }
+        
         }
-    }
-)
+    })
