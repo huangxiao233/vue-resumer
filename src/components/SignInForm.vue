@@ -44,3 +44,19 @@
         }
       }
       </script>
+     <style scoped lang="scss">
+        .row{
+          margin-bottom: 10px;
+        }
+        label{
+          display: inline-block;
+          width: 48px;
+        }
+        .submit{
+          padding: 4px 6px;
+          float: right;
+        }
+        .errorMessage{
+          color: red;
+        }
+      </style> 
